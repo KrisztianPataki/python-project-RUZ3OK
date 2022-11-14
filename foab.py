@@ -2,8 +2,6 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 import felkez
-import jatek
-
 
 main = Tk()
 
@@ -48,30 +46,23 @@ regnev.grid(column=1, row=2)
 ttk.Label(keret, text="jelszó").grid(column=0, row=3)
 regjelszo = ttk.Entry(keret)
 regjelszo.grid(column=1, row=3)
-ttk.Button(keret, text="regisztrálok", command=felkez.regisztral()).grid(row=4, column=1)
-
-
+ttk.Button(keret, text="regisztrálok", command=lambda: felkez.regisztral(regnev.get(), regjelszo.get())).grid(row=4, column=1)
 
 #felhasználó beléptetés
 
-ttk.Label(keret, text="már van felhasználód? jelentkezz be").grid(column=3, row="1")
+ttk.Label(keret, text="már van felhasználód? jelentkezz be").grid(column=3, row=1)
 
 ttk.Label(keret, text="felhasználónév").grid(column=3, row=2)
 bejnev = ttk.Entry(keret)
 bejnev.grid(column=4, row=2)
-bejnev.pack
 
 ttk.Label(keret, text="jelszó").grid(column=3, row=3)
 bejjel = ttk.Entry(keret)
 bejjel.grid(column=4, row=3)
-bejjel.pack
 
-ttk.Button(keret, text="bejelentkezés", command=felkez.bejel()).grid(column=4, row=4)
+ttk.Button(keret, text="bejelentkezés", command=lambda: felkez.bejel(bejnev.get(), bejjel.get())).grid(column=4, row=4)
 
 
 ttk.Button(keret, text="kilép", command=main.destroy).grid(column=2, row=5)
 
 main.mainloop()
-
-
-
