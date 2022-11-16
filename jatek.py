@@ -2,7 +2,14 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 
-
+#fejezet minta:
+#def fejnév():
+#ab = TK()
+#frame = ttk.frame
+#ab.title fejezetnév
+#ttk.Label(ab), text="szöveg", font=méret).grid(coll, row)
+#ttk gombok
+# ab.mainloop()
 def lapok(nev, oldal, ugy, elet, szer, hit, csap, fel, étel):
 
     def nulla():
@@ -55,7 +62,6 @@ magasodik. Csontos ujjait felemeli, és maga felé hív! De nem szól semmit —
         ttk.Button(ab, text="LAPOZOK!", command="").grid(column=3, row=2, ipady=25, ipadx=25)
         ab.mainloop()
 
-        #ttk.Label(keret, text="Kaland Játék Kockázat").grid(column=0, row=0)
 
     if oldal == "nulla":
         nulla()
