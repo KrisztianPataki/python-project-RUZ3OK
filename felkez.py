@@ -13,8 +13,9 @@ class user:
     élet = 0
     szerencse = 0
     hit = 0
-    csapások = ["semmi"]
-    felszerelés = ["kard,pajzs,hátizsák,lámpás"]
+    csapások = "semmi"
+    felszerelés = "kard,pajzs,hátizsák,lámpás"
+    étel = 10
 
 def regisztral(regnev,regjel):
     user.jelszo = regjel
@@ -26,10 +27,10 @@ def regisztral(regnev,regjel):
     user.hit = random.randint(1, 6) + 3
     print(user.jelszo, user.nev)
     file = open("mentes.txt", "a")
-    file.write(str(user.nev)+"|"+str(user.jelszo)+"|"+str(user.old)+"|"+str(user.ügy)+"|"+str(user.élet)+"|"+str(user.hit)+"|"+str(user.csapások)+"|"+str(user.felszerelés)+"\n")
+    file.write(str(user.nev)+"|"+str(user.jelszo)+"|"+str(user.old)+"|"+str(user.ügy)+"|"+str(user.élet)+"|"+str(user.hit)+"|"+str(user.csapások)+"|"+str(user.felszerelés)+"|"+str(user.étel)+"\n")
     file.close()
 
-    jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés)
+    jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés, user.étel)
 
 
 def bejel(bejnev, bejjel):
@@ -49,10 +50,11 @@ def bejel(bejnev, bejjel):
                 user.hit = szovtom[5]
                 user.csapások = szovtom[6]
                 user.felszerelés = szovtom[7]
+                user.étel = szovtom[8]
         if adatjo == 1:
             print("létezik ilyen felhasználó")
             print(user.old)
-            jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés)
+            jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés, user.étel)
         else:
             print("nem találtam ilyen felhasználót")
     except Exception as e:
