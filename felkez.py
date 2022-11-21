@@ -25,9 +25,9 @@ def regisztral(regnev,regjel):
     user.élet = random.randint(2, 12) + 12
     user.szerencse = random.randint(1, 6) + 6
     user.hit = random.randint(1, 6) + 3
-    print(user.jelszo, user.nev)
+    print(user.nev, user.jelszo+"oldal:"+user.old+"szerencse"+str(user.szerencse)+"ügyesség:"+str(user.ügy)+"élet:"+str(user.élet)+"hit:"+str(user.hit)+"csapások:"+str(user.csapások)+"felsz:"+str(user.felszerelés)+"étel:"+str(user.étel))
     file = open("mentes.txt", "a")
-    file.write(str(user.nev)+"|"+str(user.jelszo)+"|"+str(user.old)+"|"+str(user.ügy)+"|"+str(user.élet)+"|"+str(user.hit)+"|"+str(user.csapások)+"|"+str(user.felszerelés)+"|"+str(user.étel)+"\n")
+    file.write(str(user.nev)+"|"+str(user.jelszo)+"|"+str(user.old)+"|"+str(user.szerencse)+"|"+str(user.ügy)+"|"+str(user.élet)+"|"+str(user.hit)+"|"+str(user.csapások)+"|"+str(user.felszerelés)+"|"+str(user.étel)+"\n")
     file.close()
 
     jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés, user.étel)
@@ -45,12 +45,13 @@ def bejel(bejnev, bejjel):
                 adatjo = 1
                 user.nev = szovtom[0]
                 user.old = szovtom[2]
-                user.ügy = szovtom[3]
-                user.élet = szovtom[4]
-                user.hit = szovtom[5]
-                user.csapások = szovtom[6]
-                user.felszerelés = szovtom[7]
-                user.étel = szovtom[8]
+                user.szerencse = szovtom[3]
+                user.ügy = szovtom[4]
+                user.élet = szovtom[5]
+                user.hit = szovtom[6]
+                user.csapások = szovtom[7]
+                user.felszerelés = szovtom[8]
+                user.étel = szovtom[9]
         if adatjo == 1:
             print("létezik ilyen felhasználó")
             print(user.old)

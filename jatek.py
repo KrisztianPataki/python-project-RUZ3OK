@@ -10,10 +10,41 @@ from tkinter import ttk
 #ttk.Label(ab), text="szöveg", font=méret).grid(coll, row)
 #ttk gombok
 # ab.mainloop()
+
+
 def lapok(nev, oldal, ugy, elet, szer, hit, csap, fel, étel):
 
+    ab = Tk()
+
+    def karlap():
+
+        karab = Tk()
+        karab.title("karakterlap")
+        karab.minsize(width=200, height=200)
+        karframe = ttk.Frame(karab)
+
+
+
+        ttk.Label(karab, text=nev, font=25).grid(column=0, row=1)
+        ttk.Label(karab, text="életpontok: "+str(elet), font=20, foreground="red").grid(column=0, row=2)
+
+        ttk.Label(karab, text="ügyesség: " + str(ugy), font=20).grid(column=0, row=3)
+
+        ttk.Label(karab, text="szerencse: " + str(szer), font=20).grid(column=0, row=4)
+
+        ttk.Label(karab, text="hit: " + str(hit), font=20).grid(column=0, row=5)
+        ttk.Button(karab, text="mi ez?", command="").grid(column=1, row=5)
+
+        ttk.Label(karab, text="étel: " + str(étel), font=20).grid(column=0, row=9)
+        ttk.Button(karab, text="mire jó?", command="").grid(row=9, column=2)
+
+        ttk.Label(karab, text="felszerelés: " + fel, font=20).grid(column=0, row=10)
+        ttk.Label(karab, text="csapások: " + csap, font=20).grid(column=0, row=11)
+        ttk.Button(karab, text="bezár", command=karab.destroy).grid(column=4, row=13)
+        karab.mainloop()
+
     def nulla():
-        ab = Tk()
+
         frame = ttk.Frame(ab)
         ab.title("bevezető")
 
@@ -58,10 +89,9 @@ magasodik. Csontos ujjait felemeli, és maga felé hív! De nem szól semmit —
         
         """, font=20).grid(column=2, row=0)
 
-        ttk.Button(ab, text="karakterlap", command="").grid(column=1, row=2, ipadx=25, ipady=25)
+        ttk.Button(ab, text="karakterlap", command=karlap).grid(column=1, row=2, ipadx=25, ipady=25)
         ttk.Button(ab, text="LAPOZOK!", command="").grid(column=3, row=2, ipady=25, ipadx=25)
         ab.mainloop()
-
 
     if oldal == "nulla":
         nulla()
