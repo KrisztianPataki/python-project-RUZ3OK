@@ -2,6 +2,9 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 
+import jatek
+
+
 #fejezet minta:
 #def fejnév():
 #ab = TK()
@@ -12,39 +15,123 @@ from tkinter import ttk
 # ab.mainloop()
 
 
-def lapok(nev, oldal, ugy, elet, szer, hit, csap, fel, étel):
+def karlap(nev, ugy, elet, szer, hit, csap, fel, étel):
+    karab = Tk()
+    karab.title("karakterlap")
+    karab.minsize(width=200, height=200)
+    karframe = ttk.Frame(karab)
 
+    def hitleir():
+        hitleiras = Toplevel(karab)
+        hitleiras.title("hit leírás")
+        ttk.Label(hitleiras, text="""
+        HIT pontjaid szíved tisztaságát es a Jóság erőibe vetett hited erejét jelölik.
+        A magas HIT pont lehetővé teheti, hogy bizonyos lények egyszerűen elmeneküljenek előled, amint megérzik a benned lakozó bátorságot.
+        Ez azonban azt is jelenti, hogy nagyobb eséllyel érzik meg a jelenlétedet, és viselkedhetnek majd ellenségesen az irányodban!
+        A kaland során bővebben is meg fogsz majd ismerkedni ennek a tulajdonságnak a fontosságával és hatásaival, egyelőre azonban elég, ha ennyit tudsz róla
+        
+        
+        
+        """).pack()
+        ttk.Button(hitleiras, text="bezár", command=hitleiras.destroy).pack()
+
+    def ugymagy():
+        ugymagyab = Toplevel(karab)
+        ugymagyab.title("ügyesség magyarázó")
+        ttk.Label(ugymagyab, text="""
+        ÜGYESSÉG pontjaid kardvívótudásodat és általános harci tapasztalatodat mutatják.
+         Nem árt minél több ilyen pontra szert tenni.
+        """).pack()
+        ttk.Button(ugymagyab, text="bezár", command=ugymagyab.destroy).pack()
+
+    def etelmagy():
+        etelmagyab = Toplevel(karab)
+        etelmagyab.title("ételmagyarázó")
+        ttk.Label(etelmagyab, text="""
+        Bármikor megállhatsz pihenni és enni, kivéve, ahol erre más utasítást kapsz. Minden étkezés 4 pontot ad ÉLETERŐ pontjaidhoz, és 1-gyel csökkenti Elelmiszertartalékodat.
+        A Kalandlapodon külön Elelmiszerkészlet rovat van, hogy feljegyezd, mennyit fogyasztottál. Ne feledd, hogy hosszú utat kell megtenned, ezért bölcsen használd fel Elelmiszerkészletedet!
+        Azt se feledd, hogy ÉLETERŐ pontjaid száma sohasem lépheti túl Kezdeti értékét, kivéve, ha egy adott oldalon ezt az utasítást kapod.
+
+        """).pack()
+        ttk.Button(etelmagyab, text="bezár", command=etelmagyab.destroy).pack()
+
+    def csapasmagy():
+        csapasmagyab = Toplevel(karab)
+        csapasmagyab.title("csapásmagyarázó")
+        ttk.Label(csapasmagyab, text="""
+        A kaland, melynek hamarosan nekivágsz, igen veszedelmes, és nem csak a szörnyek és csapdák miatt!
+        Könnyen megeshet, különféle Csapások — átkok, betegségek, vagy még ezeknél is baljósabb dolgok 
+        is az utadba kerülnek majd. Nem akarjuk elrontani a meglepetést azzal, hogy elmondjuk, mik lesznek ezek,
+        legyen elég annyi, hogy ha egy ilyen sorscsapás sújt le rád,
+        a megfelelő fejezetponton utasítást kapsz majd rá, hogy jegyezd fel azt Kalandlapod megfelelő rovatába a hatásával egyetemben.
+        Ezektől meg is lehet szabadulni — ha elég bátor, bölcs és szerencsés vagy!
+
+        """).pack()
+        ttk.Button(csapasmagyab, text="bezár", command=csapasmagyab.destroy).pack()
+
+    def szermagy():
+        szermagyab = Toplevel(karab)
+        szermagyab.title("szerencsemagyarázó")
+        ttk.Label(szermagyab, text="""
+        Kalandjaid során, akár csatában, akár olyan helyzetekben, amikor a SZERENCSE dönthet sorsod alakulásában
+        (az erre vonatkozó utasítást az adott fejezetpontok alatt megkapod), a SZERENCSÉDRE is
+        számíthatsz, hogy az események kimenetele számodra kedvező legyen. De vigyázz!
+        A SZERENCSÉRE számítani kockázatos, és ha balszerencsés vagy, az eredmény végzetes lehet.
+
+        """).pack()
+        ttk.Button(szermagyab, text="bezár", command=szermagyab.destroy).pack()
+
+    ttk.Label(karab, text=nev, font=25).grid(column=0, row=1)
+    ttk.Label(karab, text="életpontok:"+str(elet), font=20, foreground="red").grid(column=0, row=2)
+
+    ttk.Label(karab, text="ügyesség: " + str(ugy), font=20).grid(column=0, row=3)
+    ttk.Button(karab, text="mi ez?", command=ugymagy).grid(column=1, row=3)
+
+    ttk.Label(karab, text="szerencse: " + str(szer), font=20).grid(column=0, row=4)
+    ttk.Button(karab, text="mi ez?", command=szermagy).grid(column=1, row=4)
+
+    ttk.Label(karab, text="hit: " + str(hit), font=20).grid(column=0, row=5)
+    ttk.Button(karab, text="mi ez?", command=hitleir).grid(column=1, row=5)
+
+    ttk.Label(karab, text="étel: " + str(étel), font=20).grid(column=0, row=9)
+    ttk.Button(karab, text="mi ez:?", command=etelmagy).grid(column=1, row=9)
+
+    ttk.Label(karab, text="felszerelés: " + fel, font=20).grid(column=0, row=10)
+
+    ttk.Label(karab, text="csapások: " + csap, font=20).grid(column=0, row=11)
+    ttk.Button(karab, text="mi ez:?", command=csapasmagy).grid(column=1, row=11)
+
+    ttk.Button(karab, text="bezár", command=karab.destroy).grid(column=4, row=13)
+    karab.mainloop()
+
+
+def lapok(nev, oldal, ugy, elet, szer, hit, csap, fel, étel):
     ab = Tk()
 
-    def karlap():
+    def egy(nev1, oldal1, ugy1, elet1, szer1, hit1, csap1, fel1, étel1):
 
-        karab = Tk()
-        karab.title("karakterlap")
-        karab.minsize(width=200, height=200)
-        karframe = ttk.Frame(karab)
+        ab.withdraw()
+        egyablak = Toplevel(ab)
+        oldal1 = "egy"
+        egyablak.title("első oldal")
 
+        egyablak.minsize(width=200, height=200)
+        frame1 = ttk.Frame(egyablak)
 
+        ttk.Label(egyablak, text="""Követed az alakot a kint örvénylő ködbe.
+        A fickó felugrik a fekete hintó bakjára, az ajtó pedig magától kinyílik.
+        A mének várakozóan toporognak, leheletük kis pamacsokban árad a hideg levegőben. Mit teszel?""", font=20).grid(column=1, row=1)
 
-        ttk.Label(karab, text=nev, font=25).grid(column=0, row=1)
-        ttk.Label(karab, text="életpontok: "+str(elet), font=20, foreground="red").grid(column=0, row=2)
+        ttk.Button(egyablak, text="Rátámadsz a Fejetlen Lovasra?", command="kétszázegy").grid(column=1, row=2)
+        ttk.Button(egyablak, text="Beszállsz a hintóba?", command="százhetvennégy").grid(column=1, row=3)
+        ttk.Button(egyablak, text="A kocsival nem törődve megkérded az egyik falubélit, hogyan tudsz eljutni a kastélyba?", command="száznegyvennyolc").grid(column=1, row=4)
 
-        ttk.Label(karab, text="ügyesség: " + str(ugy), font=20).grid(column=0, row=3)
-
-        ttk.Label(karab, text="szerencse: " + str(szer), font=20).grid(column=0, row=4)
-
-        ttk.Label(karab, text="hit: " + str(hit), font=20).grid(column=0, row=5)
-        ttk.Button(karab, text="mi ez?", command="").grid(column=1, row=5)
-
-        ttk.Label(karab, text="étel: " + str(étel), font=20).grid(column=0, row=9)
-        ttk.Button(karab, text="mire jó?", command="").grid(row=9, column=2)
-
-        ttk.Label(karab, text="felszerelés: " + fel, font=20).grid(column=0, row=10)
-        ttk.Label(karab, text="csapások: " + csap, font=20).grid(column=0, row=11)
-        ttk.Button(karab, text="bezár", command=karab.destroy).grid(column=4, row=13)
-        karab.mainloop()
+        ttk.Button(egyablak, text="karakterlap", command=lambda: karlap(nev1, ugy1, elet1, szer1, hit1, csap1, fel1, étel1),).grid(column=3, row=6)
+        ttk.Button(egyablak, text="mentés és kilépés").grid(column=4, row=6)
+        ttk.Button(egyablak, text="mentés").grid(column=5, row=6)
+        ttk.Button(egyablak, text="mentés a felhőbe").grid(column=6, row=6)
 
     def nulla():
-
         frame = ttk.Frame(ab)
         ab.title("bevezető")
 
@@ -89,12 +176,14 @@ magasodik. Csontos ujjait felemeli, és maga felé hív! De nem szól semmit —
         
         """, font=20).grid(column=2, row=0)
 
-        ttk.Button(ab, text="karakterlap", command=karlap).grid(column=1, row=2, ipadx=25, ipady=25)
-        ttk.Button(ab, text="LAPOZOK!", command="").grid(column=3, row=2, ipady=25, ipadx=25)
+        ttk.Button(ab, text="karakterlap", command=lambda: karlap(nev, ugy, elet, szer, hit, csap, fel, étel)).grid(column=1, row=2, ipadx=25, ipady=25)
+        ttk.Button(ab, text="LAPOZOK!", command=lambda: egy(nev, oldal, ugy, elet, szer, hit, csap, fel, étel)).grid(column=3, row=2, ipady=25, ipadx=25)
         ab.mainloop()
 
     if oldal == "nulla":
         nulla()
+    elif oldal == "egy":
+        egy(nev, oldal, ugy, elet, szer, hit, csap, fel, étel)
 
 
 
