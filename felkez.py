@@ -30,7 +30,7 @@ def regisztral(regnev,regjel):
     file.write(str(user.nev)+"|"+str(user.jelszo)+"|"+str(user.old)+"|"+str(user.szerencse)+"|"+str(user.ügy)+"|"+str(user.élet)+"|"+str(user.hit)+"|"+str(user.csapások)+"|"+str(user.felszerelés)+"|"+str(user.étel)+"\n")
     file.close()
 
-    jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés, user.étel)
+    jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés, user.étel, user.jelszo)
 
 
 def bejel(bejnev, bejjel):
@@ -44,6 +44,7 @@ def bejel(bejnev, bejjel):
             if szovtom[0] == nev and szovtom[1] == jelszo:
                 adatjo = 1
                 user.nev = szovtom[0]
+                user.jelszo = szovtom[1]
                 user.old = szovtom[2]
                 user.szerencse = szovtom[3]
                 user.ügy = szovtom[4]
@@ -55,7 +56,7 @@ def bejel(bejnev, bejjel):
         if adatjo == 1:
             print("létezik ilyen felhasználó")
             print(user.old)
-            jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés, user.étel)
+            jatek.lapok(user.nev, user.old, user.ügy, user.élet, user.szerencse, user.hit, user.csapások, user.felszerelés, user.étel, user.jelszo)
         else:
             print("nem találtam ilyen felhasználót")
     except Exception as e:

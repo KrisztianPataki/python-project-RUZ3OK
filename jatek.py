@@ -2,7 +2,8 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 
-import jatek
+import adatb
+
 
 
 #fejezet minta:
@@ -105,11 +106,11 @@ def karlap(nev, ugy, elet, szer, hit, csap, fel, étel):
     karab.mainloop()
 
 
-def lapok(nev, oldal, ugy, elet, szer, hit, csap, fel, étel):
+def lapok(nev, oldal, ugy, elet, szer, hit, csap, fel, étel, jelszo):
     ab = Tk()
 
-    def egy(nev1, oldal1, ugy1, elet1, szer1, hit1, csap1, fel1, étel1):
-
+    def egy(nev1, oldal1, ugy1, elet1, szer1, hit1, csap1, fel1, étel1,jelszo1):
+        print("itt a jelszó1:"+jelszo1)
         ab.withdraw()
         egyablak = Toplevel(ab)
         oldal1 = "egy"
@@ -127,9 +128,9 @@ def lapok(nev, oldal, ugy, elet, szer, hit, csap, fel, étel):
         ttk.Button(egyablak, text="A kocsival nem törődve megkérded az egyik falubélit, hogyan tudsz eljutni a kastélyba?", command="száznegyvennyolc").grid(column=1, row=4)
 
         ttk.Button(egyablak, text="karakterlap", command=lambda: karlap(nev1, ugy1, elet1, szer1, hit1, csap1, fel1, étel1),).grid(column=3, row=6)
-        ttk.Button(egyablak, text="mentés és kilépés").grid(column=4, row=6)
-        ttk.Button(egyablak, text="mentés").grid(column=5, row=6)
-        ttk.Button(egyablak, text="mentés a felhőbe").grid(column=6, row=6)
+        ttk.Button(egyablak, text="mentés és kilépés", command=lambda: menteski(nev1, oldal1, ugy1, elet1, szer1, hit1, csap1, fel1, étel1, jelszo1)).grid(column=4, row=6)
+        ttk.Button(egyablak, text="mentés", command=lambda: mentés(nev1, oldal1, ugy1, elet1, szer1, hit1, csap1, fel1, étel1, jelszo1)).grid(column=5, row=6)
+        ttk.Button(egyablak, text="mentés a felhőbe", command=lambda: adatb.adatbmentés(nev1, oldal1, ugy1, elet1, szer1, hit1, csap1, fel1, étel1, jelszo1)).grid(column=6, row=6)
 
     def nulla():
         frame = ttk.Frame(ab)
@@ -177,13 +178,26 @@ magasodik. Csontos ujjait felemeli, és maga felé hív! De nem szól semmit —
         """, font=20).grid(column=2, row=0)
 
         ttk.Button(ab, text="karakterlap", command=lambda: karlap(nev, ugy, elet, szer, hit, csap, fel, étel)).grid(column=1, row=2, ipadx=25, ipady=25)
-        ttk.Button(ab, text="LAPOZOK!", command=lambda: egy(nev, oldal, ugy, elet, szer, hit, csap, fel, étel)).grid(column=3, row=2, ipady=25, ipadx=25)
+        ttk.Button(ab, text="LAPOZOK!", command=lambda: egy(nev, oldal, ugy, elet, szer, hit, csap, fel, étel, jelszo)).grid(column=3, row=2, ipady=25, ipadx=25)
         ab.mainloop()
+    def mentés(nevm, oldalm, ugym, eletm, szerm, hitm, csapm, felm, ételm, jelszom):
+        file = open("mentes.txt", "a")
+        file.write(str(nevm) + "|" + str(jelszom) + "|" + str(oldalm) + "|" + str(szerm) + "|" + str(
+            ugym) + "|" + str(eletm) + "|" + str(hitm) + "|" + str(csapm) + "|" + str(
+            felm) + "|" + str(ételm))
+        file.close()
+        print("mentés sikeres")
+    def menteski(nevk, oldalk, ugyk, eletk, szerk, hitk, csapk, felk, ételk, jelszok):
+        mentés(nevk, oldalk, ugyk, eletk, szerk, hitk, csapk, felk, ételk, jelszok)
+        print("mentés és bezárás sikeres")
+        ab.destroy()
+
+
 
     if oldal == "nulla":
         nulla()
     elif oldal == "egy":
-        egy(nev, oldal, ugy, elet, szer, hit, csap, fel, étel)
+        egy(nev, oldal, ugy, elet, szer, hit, csap, fel, étel, jelszo)
 
 
 
