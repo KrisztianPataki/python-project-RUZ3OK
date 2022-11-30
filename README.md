@@ -32,3 +32,4 @@ sqlite3
 tkinter
 random
 
+--a foab.py-t indítsd el a működéshez
